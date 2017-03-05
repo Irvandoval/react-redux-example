@@ -7,6 +7,7 @@ This example gets a GitHub profile by username
 - Redux Saga  
 - React Bootstrap  
 - Webpack  
+- Babel
 
 
 ##Use  
