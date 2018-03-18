@@ -7,27 +7,30 @@ import { Form, ControlLabel, FormGroup, FormControl, Button } from 'react-bootst
 class GithubForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {username: 'irvandoval'};
+    this.state = { username: 'irvandoval' };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({username: event.target.value});
+    this.setState({ username: event.target.value });
   }
-  handleSubmit() {
+
+  handleSubmit(event) {
+    event.preventDefault();
     this.props.githubUserFetch(this.state.username);
   }
+  
   render() {
     return (
-      <Form>
-        <FormGroup controlId="username">
+      <Form onSubmit={this.handleSubmit}>
+        <FormGroup controlId="username" role="form">
           <ControlLabel>Username</ControlLabel>
           <FormControl
             type="text" placeholder="add username"
-            value={this.state.username} onChange={this.handleChange}/>
+            value={this.state.username} onChange={this.handleChange} />
         </FormGroup>
-        <Button bsStyle="success" onClick={() => { this.handleSubmit(); }}>Search</Button>
+        <Button type="submit" bsStyle="success">Search</Button>
       </Form>
     );
   }
